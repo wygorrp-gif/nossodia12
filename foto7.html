@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para a minha Princesinha 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    background-color: #1a0a0f;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, #3d1020 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, #2a0a1a 0%, transparent 50%);
+    font-family: 'Lato', sans-serif;
+    color: #f5e6ec;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Pétalas de fundo animadas */
+  .petals {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .petal {
+    position: absolute;
+    top: -40px;
+    font-size: 18px;
+    opacity: 0;
+    animation: fall linear infinite;
+  }
+  @keyframes fall {
+    0%   { opacity: 0; transform: translateY(0) rotate(0deg); }
+    10%  { opacity: 0.7; }
+    90%  { opacity: 0.5; }
+    100% { opacity: 0; transform: translateY(105vh) rotate(360deg); }
+  }
+
+  .card {
+    position: relative;
+    z-index: 1;
+    max-width: 500px;
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 0.5px solid rgba(220, 100, 130, 0.3);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    backdrop-filter: blur(6px);
+  }
+
+  .numero-memoria {
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #c2607a;
+    margin-bottom: 0.5rem;
+  }
+
+  .titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: #e8a0b0;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+  }
+
+  .foto-container {
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(220, 100, 130, 0.25);
+    margin-bottom: 1.75rem;
+    line-height: 0;
+  }
+
+  .foto-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 420px;
+    object-fit: cover;
+  }
+
+  .mensagem {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #f0d4de;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+
+  .mensagem em {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #e8a0b0;
+  }
+
+  .assinatura {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #c2607a;
+    letter-spacing: 1px;
+  }
+
+  .coracao {
+    font-size: 22px;
+    display: block;
+    margin-bottom: 0.5rem;
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.18); }
+  }
+
+  .nav-hint {
+    margin-top: 1.5rem;
+    font-size: 12px;
+    color: rgba(220, 100, 130, 0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<div class="petals" id="petals"></div>
+
+<div class="card">
+  <p class="numero-memoria">Memória · 7 de 8</p>
+  <p class="titulo">Para a minha Lilian</p>
+
+  <div class="foto-container">
+    <img src="fotos/foto7.jpg" alt="Nossa memória 7" />
+  </div>
+
+  <p class="mensagem">Quando eu penso em lar, eu penso em você. <em>No seu riso, no seu abraço, na paz que só você sabe me dar.</em></p>
+
+  <span class="coracao">♥</span>
+  <p class="assinatura">Com todo meu amor,<br>o seu amor</p>
+
+  <p class="nav-hint">procure o próximo QR code ✦</p>
+</div>
+
+<script>
+  const emojis = ['🌹','✨','💕','🌸','💖'];
+  const petals = document.getElementById('petals');
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('span');
+    p.className = 'petal';
+    p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (6 + Math.random() * 8) + 's';
+    p.style.animationDelay = (Math.random() * 10) + 's';
+    p.style.fontSize = (14 + Math.random() * 10) + 'px';
+    petals.appendChild(p);
+  }
+</script>
+</body>
+</html>
